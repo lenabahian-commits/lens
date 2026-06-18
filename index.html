@@ -443,13 +443,6 @@
             box-shadow: 0 0 5px var(--button-shadow-color);
         }
         .social-btn:hover { background: var(--primary-pink); color: white; transform: translateY(-5px); box-shadow: 0 5px 15px var(--hover-glow); border-color: transparent; }
-        .see-more-btn {
-            background: var(--primary-pink); color: white; border: none;
-            padding: 12px 30px; border-radius: 50px; 
-            font-weight: 600; font-family: 'Poppins', sans-serif; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 4px 15px var(--button-shadow-color);
-        }
-        .see-more-btn:hover { transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 8px 20px var(--hover-glow); }
 
         @media (max-width: 768px) {
             .home-layout {
@@ -524,7 +517,7 @@
                     <div class="typing-text cursor-blink" id="typewriter"></div>
                 </div>
                 <p style="max-width: 600px; margin: 0 0 20px 0; opacity: 0.9;">  
-                    Hi! I am <b style="color: var(--primary-pink);">Lena Bahi-an</b> Crafting innovative solutions through design, code, and creativity. Welcome to a space where ideas turn into experience - a journey of learning, building, and growing.
+                  Crafting innovative solutions through design, code, and creativity. Welcome to a space where ideas turn into experience - a journey of learning, building, and growing.
                 </p>  
                 <div class="home-actions">
                     <div class="social-links">
@@ -533,7 +526,7 @@
                         <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
                         <a href="https://github.com/lenabahian-commits/Lena-Bahi-an-" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
                     </div>
-                    <a href="#about"><button class="see-more-btn">Discover My Journey</button></a>
+                    <button onclick="handleResumeAction()" class="download-btn">📄 Download CV</button>
                 </div>
             </div>
             <div class="profile-pic">
@@ -543,18 +536,13 @@
     </section>
 
     <section id="about">
-        <h2>System Profile</h2>
+        <h2><span style="color: #ffffff;">About</span> Me</h2>
         <p>I am a dedicated <b>Bachelor of Science in Information Technology</b> student at Central Philippines State University (CPSU). My academic journey is fueled by a deep commitment to mastering the art of digital problem-solving.</p>
         <p>Beyond the classroom, I am an active creator who finds joy in the architecture of code and the aesthetics of graphic design. I pride myself on being highly organized, detail-oriented, and constantly evolving with the latest industry trends—transforming technical challenges into seamless user experiences.</p>  
-        <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--primary-pink), transparent); margin: 30px 0;">  
-        <div class="resume-container">  
-            <button onclick="handleResumeAction()" class="download-btn">📄 Download CV</button>  
-            <p><small style="opacity: 0.7;">(Available for full viewing and auto-download)</small></p>  
-        </div>  
     </section>
 
     <section id="skills">  
-        <h2>Technical Stack</h2>  
+        <h2><span style="color: #ffffff;">Technical</span> Stack</h2>  
         <div class="centered-skill-text">Building Modern Experiences with Modern Tools</div>  
         <div class="platform-list">  
             <a href="https://www.adobe.com/products/premiere.html" target="_blank" class="platform-item"><div class="platform-icon-wrapper"><img src="Addob.png" alt="Premiere"></div><p>Premiere</p></a>  
@@ -565,7 +553,7 @@
     </section>
 
    <section id="projects">  
-        <h2>Portfolio Showcase</h2>  
+        <h2><span style="color: #ffffff;">Portfolio</span> Showcase</h2>  
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="filterProjects('all')">All Works</button>
             <button class="filter-btn" onclick="filterProjects('graphics')">UI/UX Design</button>
@@ -587,7 +575,7 @@
 
         <div class="filter-item certificates">
             <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--primary-pink), transparent); margin: 40px 0;">  
-            <h2 class="cert-title">Professional Milestones</h2>  
+            <h2 class="cert-title"><span style="color: #ffffff;">Professional</span> Milestones</h2>  
             <div class="project-grid">  
                 <div class="project-item">
                     <img src="Cg.jpg" style="object-fit:contain;" alt="IT Seminar">
@@ -615,7 +603,7 @@
     </section>
 
     <section id="Tutorials">
-        <h2>Expertise Tutorials</h2>
+        <h2><span style="color: #ffffff;">Expertise</span> Tutorials</h2>
         <div class="video-grid">
             <div class="video-wrapper"><div class="video-item"><iframe src="https://www.youtube.com/embed/jQ1sfKIl50E"></iframe></div><p>Figma Mastery</p></div>
             <div class="video-wrapper"><div class="video-item"><iframe src="https://www.youtube.com/embed/jzWxBuvwuwQ"></iframe></div><p>Canva Pro Tips</p></div>
@@ -624,7 +612,7 @@
     </section>
 
     <section id="contact-section">
-        <h2>Contact Me</h2>
+        <h2><span style="color: #ffffff;">Contact</span> Me</h2>
         <div id="contact-icons-card">
             <div class="icon-group">
                 <a href="mailto:lenabahian@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
@@ -694,16 +682,26 @@
         const cursor = document.querySelector('.cursor-dot');
         document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
 
-        // ===== BAGONG ONE-TIME TYPING FUNCTION =====
+        // ===== ONE-TIME TYPING FUNCTION =====
         const textElement = document.getElementById('typewriter');
-        const word = "Welcome to my Portfolio.";
+        
+        const phrase1 = "<span style='color: #ffffff;'>Hello it's me </span>";
+        const phrase2 = "<span style='color: #00b4d8; text-shadow: 0 0 10px var(--hover-glow);'>LENA BAHI-AN.</span>";
+        
+        let dynamicText = "";
         let charIndex = 0;
+        const fullLength = "Hello it's me LENA BAHI-AN.".length;
 
         function type() {
-            if (charIndex < word.length) {
-                textElement.textContent += word.charAt(charIndex);
+            if (charIndex < fullLength) {
                 charIndex++;
-                setTimeout(type, 150); // Bilis ng pag-type ng kada letra
+                if (charIndex <= 15) {
+                    textElement.innerHTML = phrase1.substring(0, phrase1.indexOf('>') + 1 + charIndex) + "</span>";
+                } else {
+                    let subIndex = charIndex - 15;
+                    textElement.innerHTML = phrase1 + phrase2.substring(0, phrase2.indexOf('>') + 1 + subIndex) + "</span>";
+                }
+                setTimeout(type, 150); 
             }
         }
         document.addEventListener('DOMContentLoaded', type);
