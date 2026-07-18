@@ -1,237 +1,177 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Lena Bahi-an | Portfolio</title>  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lena Bahi-an | Professional IT Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <style>  
-        /* ===== VARIABLES & DARK THEME WITH DEEP PINK ACCENTS ===== */
+    <style>
+        /* ===== STYLING VARIABLE CONTROLS ===== */
         :root {
-            --bg-gradient: radial-gradient(at 0% 0%, #1a0813 0%, transparent 60%), 
-                           radial-gradient(at 100% 0%, #050108 0%, transparent 50%), 
-                           radial-gradient(at 50% 100%, #ff149322 0%, transparent 70%);
-            --bg-fallback: #0a0207;
-            --section-bg: rgba(20, 5, 15, 0.75); 
-            --glass-border: rgba(255, 20, 147, 0.25);
-            --text-color: #fce8f3;
-            --primary-pink: #ff1493; 
-            --nav-bg: #12020a; 
-            --icon-bg: rgba(255, 20, 147, 0.15); 
-            --box-shadow: 0 10px 40px rgba(255, 20, 147, 0.15);
-            --hover-glow: rgba(255, 20, 147, 0.5); 
+            /* Modified background palette to sleek dark blue / navy */
+            --bg-color: #030a16;
+            --body-bg: radial-gradient(circle at center, #07152d 0%, #020710 100%);
             
-            --contact-box-bg: rgba(255, 20, 147, 0.1);
-            --button-shadow-color: rgba(255, 20, 147, 0.4);
+            /* Changed accent elements from deep pink to radiant electric blue */
+            --primary-blue: #00d2ff;
+            --text-color: #f0f5fc;
+            --nav-bg: rgba(6, 17, 36, 0.7);
+            --view-card-bg: rgba(8, 23, 48, 0.4);
+            --contact-box-bg: rgba(10, 29, 61, 0.35);
+            --glass-border: rgba(0, 210, 255, 0.15);
+            --button-shadow-color: rgba(0, 210, 255, 0.3);
+            --hover-glow: rgba(0, 210, 255, 0.2);
         }
 
-        body.dark-mode {
-            --bg-gradient: radial-gradient(at 0% 0%, #fff0f6 0%, transparent 50%), 
-                           radial-gradient(at 100% 0%, #ffdeeb 0%, transparent 50%), 
-                           radial-gradient(at 100% 100%, #ff14931a 0%, transparent 50%);
-            --bg-fallback: #fff5f9;
-            --section-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 20, 147, 0.2);
-            --text-color: #2b0618;
-            --primary-pink: #d90479; 
-            --nav-bg: #2b0618;
-            --icon-bg: rgba(255, 222, 235, 0.9);
-            --box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            --hover-glow: rgba(217, 4, 121, 0.2); 
-            --contact-box-bg: rgba(217, 4, 121, 0.05);
+        /* ===== BASE SYSTEM SETTINGS ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-
-        /* ===== GENERAL STYLES ===== */  
-        html { scroll-behavior: smooth; }  
-        body {  
-            font-family: "Poppins", sans-serif;  
-            background-color: var(--bg-fallback);
-            background-image: var(--bg-gradient);  
-            color: var(--text-color);  
-            margin: 0; padding: 0;  
-            transition: background 0.5s ease, color 0.5s ease;
-            overflow-x: hidden;
-            background-attachment: fixed;
-        }  
-        h2 {  
-            color: var(--primary-pink); 
-            text-align: center; 
-            margin-bottom: 25px; 
-            font-weight: 800; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            font-size: 1.5rem; 
-            text-shadow: 0 0 15px var(--button-shadow-color);
-        }  
-        p { line-height: 1.6; }
-
-        .cert-title {
-            font-size: 20px; 
-            font-weight: 800;
-            padding: 0 10px;
-            margin-top: 30px;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-color);
+            background-image: var(--body-bg);
             color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* ===== CUSTOM CURSOR ===== */
-        .cursor-dot {
-            width: 20px; height: 20px; background: var(--primary-pink); border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: screen; display: none;
-            box-shadow: 0 0 15px var(--primary-pink);
-        }
-        @media (min-width: 1024px) { .cursor-dot { display: block; } }
-
-        /* ===== HEADER ADJUSTMENTS ===== */  
-        header {  
-            background: var(--nav-bg); 
-            color: white; 
-            padding: 10px 0; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.15);  
-            border-bottom: 1px solid var(--glass-border);
-        }  
-        .nav-container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            width: 95%; 
-            max-width: 1200px; 
+        /* ===== CONTAINER FOR CENTRALIZING SCENERY ===== */
+        .wrapper {
+            max-width: 1100px;
+            width: 100%;
             margin: 0 auto;
-            flex-wrap: nowrap;
+            padding: 0 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .logo {
-            font-size: 18px; 
-            font-weight: 800;
-            color: var(--primary-pink);
-            text-decoration: none;
-            letter-spacing: 1px;
-            flex-shrink: 0;
-            text-shadow: 0 0 10px var(--button-shadow-color);
-        }
-        nav { 
-            display: flex; 
-            gap: 10px; 
-            align-items: center;
-            overflow-x: auto; 
-            white-space: nowrap;
-            padding: 0 5px;
-        }  
-        nav a { 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-weight: 400; 
-            font-size: 12px; 
-            padding: 5px 4px; 
-            transition: 0.3s; 
-            position: relative;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: 0; left: 0;
-            background-color: var(--primary-pink);
-            transition: 0.3s;
-            box-shadow: 0 0 8px var(--primary-pink);
-        }
-        nav a:hover::after { width: 100%; }
-        nav a:hover { color: var(--primary-pink); text-shadow: 0 0 8px var(--primary-pink); }
 
-        .header-right {
+        /* ===== HEADER STYLING ===== */
+        header {
+            margin-top: 24px;
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+        nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .nav-logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-color);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
+            gap: 8px;
         }
-
-        .header-download-btn {
-            background: var(--primary-pink);
-            color: white;
+        .nav-logo i {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px var(--button-shadow-color);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+        .nav-btn {
+            background: transparent;
             border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 12px;
+            color: var(--text-color);
+            padding: 10px 18px;
+            font-size: 0.9rem;
             font-weight: 600;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.25s ease;
+            font-family: inherit;
         }
-        .header-download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--primary-pink);
+        .nav-btn:hover {
+            color: var(--primary-blue);
+            background: rgba(0, 210, 255, 0.06);
+        }
+        .nav-btn.active {
+            background: var(--primary-blue);
+            color: #020710;
+            box-shadow: 0 0 15px var(--button-shadow-color);
         }
 
-        .mode-toggle { 
-            background: rgba(255,255,255,0.1); 
-            color: white; 
-            border: none; 
-            cursor: pointer; 
-            font-size: 14px; 
-            border-radius: 50%;
-            width: 32px; height: 32px;
-            display: flex; align-items: center; justify-content: center;
-            transition: 0.3s;
+        /* ===== MAIN VIEW DEPLOYMENT ENGINE ===== */
+        main {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .mode-toggle:hover { background: var(--primary-pink); box-shadow: 0 0 10px var(--primary-pink); }
-
-        /* ===== SECTIONS ===== */  
-        section {  
-            width: 90%; max-width: 900px; margin: 50px auto; 
-            background: var(--section-bg);  
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+        .view-panel {
+            display: none;
+            width: 100%;
+            background: var(--view-card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 40px; box-shadow: var(--box-shadow);
-            opacity: 0; 
-            transform: translateY(60px); 
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            animation: renderIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        
-        section.reveal { 
-            opacity: 1; 
-            transform: translateY(0); 
+        .view-panel.active {
+            display: block;
         }
 
-        section:hover {
-            box-shadow: 0 20px 50px var(--hover-glow);
-            border: 1px solid var(--primary-pink);
+        @keyframes renderIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== PICTURE PERFECT MATCHING HERO (HOME) ===== */
+        /* ===== WORKSPACE HEADINGS ===== */
+        .section-headline {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-headline i {
+            color: var(--primary-blue);
+        }
+        .section-subtext {
+            font-size: 0.95rem;
+            color: #a0aec0;
+            margin-bottom: 30px;
+        }
+
+        /* ===== HOME PROFILE HERO STRUCTURE ===== */
         .home-layout {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            background: rgba(10, 2, 7, 0.4);
-            border-radius: 20px;
-            padding: 40px;
-        }
-        .home-left {
-            flex: 1;
-            display: flex;
             justify-content: center;
-            align-items: center;
-        }
-        .home-right {
-            flex: 1.2;
-            display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 15px;
+            gap: 40px;
+            padding: 20px 0;
+            text-align: center;
         }
-        .home-description {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.9;
-            color: var(--text-color);
-        }
-
-        /* Glowing Border Profile Ring */
         .profile-pic-container {
             position: relative;
             width: 250px;
@@ -246,519 +186,464 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 4px solid var(--primary-pink);
-            box-shadow: 0 0 25px var(--primary-pink), inset 0 0 25px var(--primary-pink);
-            animation: pulseGlow 3s infinite ease-in-out;
+            border: 2px dashed var(--primary-blue);
+            animation: rotateRing 20s linear infinite;
+            box-shadow: 0 0 20px var(--button-shadow-color);
         }
-        .profile-pic-container img { 
-            width: 90%; 
-            height: 90%; 
-            object-fit: cover; 
-            border-radius: 50%; 
-            z-index: 2;
-        }  
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.02); opacity: 1; box-shadow: 0 0 35px var(--primary-pink), inset 0 0 20px var(--primary-pink); }
-        }
-
-        /* Image Social Icons Layout */
-        .home-social-group {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 5px;
-        }
-        .home-social-box {
-            width: 36px;
-            height: 36px;
-            border: 2px solid var(--primary-pink);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-pink);
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s ease;
-            background: rgba(255, 20, 147, 0.05);
-        }
-        .home-social-box:hover {
-            background: var(--primary-pink);
-            color: white;
-            box-shadow: 0 0 15px var(--primary-pink);
-            transform: translateY(-3px);
-        }
-
-        /* Image Matched CTA Rectangular Buttons */
-        .home-cta-group {
-            display: flex;
-            gap: 15px;
-            width: 100%;
-        }
-        .cta-box-btn {
-            flex: 1;
-            background: var(--primary-pink);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 14px 10px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 4px 15px var(--button-shadow-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .cta-box-btn.secondary-style {
-            background: transparent;
-            border: 2px solid var(--primary-pink);
-            color: var(--primary-pink);
-            box-shadow: none;
-        }
-        .cta-box-btn:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px var(--primary-pink);
-            background: var(--primary-pink);
-            color: white;
-        }
-
-        /* ===== IMPROVED CONTACT SECTION STYLES ===== */
-        #contact-icons-card {
-            background: rgba(10, 25, 47, 0.6);
-            padding: 30px;
-            border-radius: 25px;
-            max-width: 400px;
-            margin: 0 auto 30px;
-            box-shadow: inset 0 0 15px rgba(255, 20, 147, 0.1), 0 10px 25px rgba(0,0,0,0.3);
+        .profile-pic-container::after {
+            content: '';
+            position: absolute;
+            width: 108%;
+            height: 108%;
+            border-radius: 50%;
             border: 1px solid var(--glass-border);
+            animation: rotateRingReverse 15s linear infinite;
         }
-        .icon-group {
+        .profile-pic {  
+            width: 220px;  
+            height: 220px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+            border: 4px solid var(--primary-blue);
+            box-shadow: 0 0 30px var(--button-shadow-color);
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.03);
+        }
+
+        @keyframes rotateRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes rotateRingReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .home-info-panel {
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 600px;
         }
-        .icon-group a {
-            color: var(--primary-pink);
-            font-size: 22px;
-            text-decoration: none;
-            transition: 0.3s;
+        .home-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+        .home-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin: 0;
             text-shadow: 0 0 10px var(--button-shadow-color);
         }
-        .icon-group a:hover {
-            color: #ffb6c1;
-            transform: translateY(-5px);
-            text-shadow: 0 0 20px var(--primary-pink);
+        .home-description {
+            font-size: 0.98rem;
+            color: #a0aec0;
+            line-height: 1.6;
         }
 
-        .contact-form { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
-        .form-row { display: flex; gap: 15px; }
-        .form-group { flex: 1; display: flex; flex-direction: column; }
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 12px 18px; border: 1px solid var(--glass-border);
-            border-radius: 12px; background: rgba(255, 20, 147, 0.05); color: var(--text-color);
-            font-family: 'Poppins', sans-serif; font-size: 14px; transition: 0.3s; box-sizing: border-box;
+        /* ===== TIMELINE / CERTIFICATE CARDS ===== */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            padding-left: 20px;
         }
-        body.dark-mode .contact-form input, body.dark-mode .contact-form textarea {
-            background: #fff5f9; color: #333; border: 1px solid #f1f1f1;
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--glass-border);
+            top: 0; bottom: 0; left: 0;
         }
-        .contact-form input:focus, .contact-form textarea:focus { 
-            outline: none; 
-            border-color: var(--primary-pink); 
-            background: rgba(255, 20, 147, 0.15); 
-            box-shadow: 0 0 15px var(--hover-glow); 
+        .timeline-container {
+            padding: 10px 20px;
+            position: relative;
+            background-color: transparent;
         }
-        body.dark-mode .contact-form input:focus, body.dark-mode .contact-form textarea:focus {
-            background: #fff;
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 12px; height: 12px;
+            left: -6px; top: 24px;
+            background-color: var(--primary-blue);
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 8px var(--primary-blue);
         }
-        .submit-btn-small {
-            background: var(--primary-pink); 
-            color: white; 
-            padding: 12px 30px; 
-            border: none; 
-            border-radius: 50px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: 0.3s;
-            width: 100%;
-            box-shadow: 0 4px 15px var(--button-shadow-color);
-        }
-        .submit-btn-small:hover { transform: scale(1.02); background: #d90479; box-shadow: 0 0 20px var(--primary-pink); }
-
-        .centered-skill-text { text-align: center; margin-bottom: 30px; font-size: 16px; font-weight: 500; opacity: 0.9; }
-        .platform-list { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 15px 0; }  
-        .platform-item { text-align: center; text-decoration: none; color: inherit; width: 80px; }
-        .platform-icon-wrapper { background-color: var(--icon-bg); padding: 12px; border-radius: 18px; border: 1px solid transparent; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }  
-        .platform-icon-wrapper:hover { transform: translateY(-10px) rotate(5deg); background-color: rgba(255, 20, 147, 0.1); border-color: var(--primary-pink); box-shadow: 0 10px 20px var(--hover-glow); }
-        .platform-item img { width: 50px; height: 50px; border-radius: 8px; }  
-        .platform-item p { font-size: 12px; font-weight: 600; margin-top: 8px; }
-
-        .filter-buttons { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
-        .filter-btn { padding: 8px 22px; border: 2px solid var(--primary-pink); background: transparent; color: var(--primary-pink); border-radius: 25px; cursor: pointer; font-weight: 600; transition: 0.3s; text-shadow: 0 0 5px var(--button-shadow-color); }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary-pink); color: white; box-shadow: 0 5px 15px var(--button-shadow-color); }
-
-        .project-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 25px; }  
-        .project-item { 
-            text-align: center; 
-            background: var(--icon-bg); 
-            border-radius: 20px; 
-            padding: 20px; 
-            width: 260px;
-            transform-style: perspective(1000px);
-            transition: 0.4s; 
+        .content {
+            padding: 24px;
+            background: rgba(0, 210, 255, 0.04);
             border: 1px solid var(--glass-border);
-        }  
-        .project-item:hover {
-            box-shadow: 0 15px 35px var(--hover-glow);
-            border: 1px solid var(--primary-pink);
-            background: rgba(255, 20, 147, 0.1);
-            transform: translateY(-10px);
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s ease;
         }
-        .project-item img { 
-            width: 100%; height: 180px; 
-            border-radius: 12px; 
-            object-fit: cover; 
-            background: #1a0512; 
-            cursor: zoom-in;
+        .content:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .content h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+        .content h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+        .content p {
+            font-size: 0.92rem;
+            color: #a0aec0;
+        }
+
+        /* ===== CONTACT & LINKS GRID ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .contact-box {
+            background: var(--contact-box-bg);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .contact-box i {
+            font-size: 26px;
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px var(--button-shadow-color);
+        }
+        .contact-box span {
+            font-size: 0.85rem;
+            color: #8a99ad;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .contact-box h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .contact-box:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 25px var(--hover-glow);
+            transform: translateY(-5px);
+        }
+
+        /* ===== INTEGRATED CHATBOT INTERFACE ===== */
+        .chatbot-container {
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(3, 13, 30, 0.7);
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+            margin-top: 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .chatbot-header {
+            background: rgba(6, 17, 36, 0.9);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .chatbot-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-blue);
+            object-fit: cover;
+        }
+        .chatbot-info h4 {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .chatbot-info span {
+            font-size: 10px;
+            color: #8a99ad;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .chatbot-info span::before {
+            content: '';
+            display: inline-block;
+            width: 6px; height: 6px;
+            background: #00ff66;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #00ff66;
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .msg {
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .msg.incoming {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .msg.outgoing {
+            background: var(--primary-blue);
+            color: #020710;
+            font-weight: 500;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            box-shadow: 0 4px 12px var(--button-shadow-color);
+        }
+        .chatbot-input-area {
+            padding: 12px;
+            display: flex;
+            gap: 8px;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(4, 13, 29, 0.5);
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
             transition: 0.3s;
-        }  
-        body.dark-mode .project-item img { background: #fff; }
-        .project-item p { font-weight: 600; margin-top: 15px; color: var(--primary-pink); text-shadow: 0 0 5px var(--button-shadow-color); }
-        
-        .filter-item { transition: all 0.3s ease; }
-
-        .output-list { list-style: none; padding: 0; text-align: center; margin-top: 25px; }
-        .output-list li { margin-bottom: 15px; font-size: 16px; }
-        .output-list a { color: var(--primary-pink); text-decoration: none; font-weight: bold; border-bottom: 2px solid transparent; transition: 0.3s ease; display: inline-block; padding: 5px 0; text-shadow: 0 0 5px var(--button-shadow-color); }
-        .output-list a:hover { border-bottom: 2px solid var(--primary-pink); transform: translateX(8px); text-shadow: 0 0 10px var(--primary-pink); }
-
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 25px; }
-        .video-wrapper { text-align: center; transition: 0.3s; }
-        .video-item { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 3px solid transparent; transition: 0.3s; }
-        .video-item iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .video-wrapper:hover { transform: scale(1.03); }
-        .video-wrapper:hover .video-item { border-color: var(--primary-pink); box-shadow: 0 10px 30px var(--hover-glow); }
-        .video-wrapper p { margin-top: 12px; font-weight: 600; font-size: 14px; }
-
-        /* ===== FOOTER & SOCIAL ICONS ===== */
-        footer { 
-            text-align: center; 
-            padding: 50px 25px; 
-            background: var(--nav-bg); 
-            color: white; 
-            margin-top: 50px; 
-            border-top: 3px solid var(--primary-pink); 
-            box-shadow: 0 -4px 20px rgba(255, 20, 147, 0.15);
         }
-        .footer-socials { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
-        .social-icon {
-            font-size: 20px; color: white; background: rgba(255, 255, 255, 0.05);
-            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;
-            border-radius: 50%; transition: 0.4s; text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.1);
+        .chatbot-input-area input:focus {
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
         }
-        .social-icon:hover { background: var(--primary-pink); transform: translateY(-5px) rotate(360deg); box-shadow: 0 5px 20px var(--hover-glow); border-color: transparent; }
+        .chatbot-send-btn {
+            background: var(--primary-blue);
+            color: #020710;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .chatbot-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px var(--primary-blue);
+        }
 
-        /* ===== CHATBOT ===== */
-        #chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: 'Poppins', sans-serif; }
-        #chat-button {
-            width: 55px; height: 55px; background: var(--primary-pink);
-            border: none; border-radius: 50%; color: white;
-            font-size: 24px; cursor: pointer; box-shadow: 0 6px 20px var(--button-shadow-color);
-            transition: 0.4s; display: flex; justify-content: center; align-items: center;
-        }
-        #chat-button:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--primary-pink); }
-        #chat-window {
-            display: none; width: 300px; height: 420px;
-            background: rgba(20, 5, 15, 0.95); backdrop-filter: blur(20px);
-            border: 2px solid var(--primary-pink); border-radius: 25px;
-            position: absolute; bottom: 70px; right: 0;
-            flex-direction: column; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-        }
-        body.dark-mode #chat-window { background: var(--section-bg); }
-        .chat-header {
-            background: var(--nav-bg); color: white; padding: 12px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--primary-pink);
-        }
-        .chat-header-info { display: flex; align-items: center; gap: 8px; }
-        .chat-header-info img { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--primary-pink); object-fit: cover; }
-        .chat-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-        .msg-wrapper { display: flex; flex-direction: column; width: 100%; }
-        .msg { padding: 8px 12px; border-radius: 15px; max-width: 85%; font-size: 12px; line-height: 1.4; }
-        .msg.bot { background: var(--icon-bg); color: var(--text-color); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(255, 20, 147, 0.15); }
-        .msg.user { background: var(--primary-pink); color: white; align-self: flex-end; border-bottom-right-radius: 2px; box-shadow: 0 2px 8px var(--button-shadow-color); }
-        .chat-input-area { padding: 12px; border-top: 1px solid var(--glass-border); display: flex; gap: 8px; background: rgba(255,255,255,0.05); }
-        #user-input { flex: 1; border: 1px solid var(--primary-pink); border-radius: 20px; padding: 6px 12px; outline: none; background: transparent; color: var(--text-color); font-size: 12px; }
-        body.dark-mode #user-input { color: #333; }
-        #send-btn { background: var(--primary-pink); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; }
-
+        /* ===== ADAPTIVE SCREEN BREAKPOINTS ===== */
         @media (max-width: 768px) {
-            .home-layout {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-                padding: 20px;
+            .view-panel {
+                padding: 24px;
             }
-            .home-right {
-                align-items: center;
-                text-align: center;
+            .profile-pic-container {
+                width: 200px;
+                height: 200px;
             }
-            .nav-container { width: 98%; padding: 0 5px; }
-            nav { gap: 4px; padding-bottom: 2px; } 
-            nav a { font-size: 10px; padding: 4px 3px; }
-            .logo { font-size: 15px; margin-right: 5px; }
-            .mode-toggle { width: 28px; height: 28px; font-size: 12px; }
-            .form-row { flex-direction: column; gap: 15px; }
-            section { padding: 20px; width: 92%; }
-            .cert-title { font-size: 16px; }
+            .profile-pic {
+                width: 170px;
+                height: 170px;
+            }
+            .home-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 12px;
+            opacity: 0.6;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 60px;
+            background: rgba(4, 14, 31, 0.5);
         }
     </style>
-</head>  
-
+</head>
 <body>
-    <div class="cursor-dot"></div>
 
-    <header>  
-        <div class="nav-container">
-            <a href="#home" class="logo">Portfolio.</a>
-            <nav>  
-                <a href="#home">Home</a>  
-                <a href="#about">About</a>  
-                <a href="#skills">Skills</a>  
-                <a href="#projects">Work</a> 
-                <a href="#Tutorials">Videos</a> 
-                <a href="#contact-section">Contact</a>
+    <div class="wrapper">
+        <!-- GLOBAL APP NAVIGATION -->
+        <header>
+            <nav>
+                <a href="#" class="nav-logo" onclick="switchView('home')">
+                    <i class="fa-solid : code"></i> Lena.IT
+                </a>
+                <ul class="nav-links">
+                    <li><button class="nav-btn active" id="btn-home" onclick="switchView('home')">Home</button></li>
+                    <li><button class="nav-btn" id="btn-credentials" onclick="switchView('credentials')">Credentials</button></li>
+                    <li><button class="nav-btn" id="btn-contact" onclick="switchView('contact')">Contact</button></li>
+                </ul>
             </nav>
-            <div class="header-right">
-                <button onclick="handleResumeAction()" class="header-download-btn">Download CV</button>
-                <button class="mode-toggle" id="modeBtn">🌙</button>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <div id="chat-widget">
-        <button id="chat-button"><i class="fa-solid fa-robot"></i></button>
-        <div id="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <img src="Cn.png" alt="Lena Assistant">
-                    <span style="font-size: 13px; font-weight: 600;">Lena's Virtual Assistant</span>
+        <!-- ROUTING SYSTEM VIEWS -->
+        <main>
+            <!-- VIEW: HOME PROFILE HUB -->
+            <div id="view-home" class="view-panel active">
+                <div class="home-layout">
+                    <div class="profile-pic-container">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" alt="Lena Bahi-an" class="profile-pic">
+                    </div>
+                    <div class="home-info-panel">
+                        <h1 class="home-title">Lena Bahi-an</h1>
+                        <h2 class="home-subtitle">BSIT Student</h2>
+                        <p class="home-description">
+                            Welcome to my professional tech landscape. I focus on developing clean, structured front-end interfaces, managing networking architecture, and configuring local systems environments.
+                        </p>
+                    </div>
                 </div>
-                <i class="fa-solid fa-xmark" style="cursor:pointer" id="close-chat"></i>
             </div>
-            <div class="chat-messages" id="chat-messages"></div>
-            <div class="chat-input-area">
-                <input type="text" id="user-input" placeholder="Ask about Lena's skills...">
-                <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+
+            <!-- VIEW: CREDENTIALS TIMELINE -->
+            <div id="view-credentials" class="view-panel">
+                <h2 class="section-headline"><i class="fa-solid fa-graduation-cap"></i> Verified Credentials</h2>
+                <p class="section-subtext">Academic history and professional training certifications.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-container">
+                        <div class="content">
+                            <h3>Cisco Networking Academy</h3>
+                            <h4>Verified Student Credential</h4>
+                            <p>Completed comprehensive technical training focusing on baseline vulnerability assessments, foundational risk mitigation, access control matrices, and security incident response protocols.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <!-- VIEW: CONTACT INTERFACE & CHATBOT -->
+            <div id="view-contact" class="view-panel">
+                <h2 class="section-headline"><i class="fa-solid fa-envelope"></i> Let's Connect</h2>
+                <p class="section-subtext">Access my verified channels or message my automated terminal assistant immediately below.</p>
+                
+                <div class="contact-grid">
+                    <a href="https://github.com" target="_blank" class="contact-box">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Version Control</span>
+                        <h3>GitHub Profile</h3>
+                    </a>
+                    <div class="contact-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Current Location</span>
+                        <h3>Isabela, Philippines</h3>
+                    </div>
+                </div>
+
+                <!-- BUILT-IN SYSTEM CHATBOT ARCHITECTURE -->
+                <div class="chatbot-container">
+                    <div class="chatbot-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" alt="Lena" class="chatbot-avatar">
+                        <div class="chatbot-info">
+                            <h4>Lena's Assistant</h4>
+                            <span>Always Online</span>
+                        </div>
+                    </div>
+                    <div class="chatbot-messages" id="chat-messages">
+                        <div class="msg incoming">
+                            Hello! I am Lena's automated assistant. Feel free to leave a message or ask about her IT coursework and projects!
+                        </div>
+                    </div>
+                    <div class="chatbot-input-area">
+                        <input type="text" id="chat-input" placeholder="Type a message here..." onkeypress="handleChatKey(event)">
+                        <button class="chatbot-send-btn" onclick="sendChatMessage()">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER LAYER -->
+        <footer>
+            <p>&copy; 2026 Lena Bahi-an. Built with HTML, CSS, and JavaScript.</p>
+        </footer>
     </div>
 
-    <!-- ===== HOME SECTION EXACT IMAGE MATCH ===== -->
-    <section id="home">  
-        <div class="home-layout">
-            <div class="home-left">
-                <div class="profile-pic-container">
-                    <img src="Cn.png" alt="Lena Bahi-an">
-                </div>
-            </div>
-            <div class="home-right">
-                <div class="home-description">
-                    I am a passionate web developer who enjoys creating clean and responsive websites.
-                </div>
-                <div class="home-social-group">
-                    <a href="https://www.facebook.com/lens.bahian" target="_blank" class="home-social-box"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank" class="home-social-box"><i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/lenabahian-commits/Lena-Bahi-an-" target="_blank" class="home-social-box"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <div class="home-cta-group">
-                    <a href="#projects" class="cta-box-btn">View Project</a>
-                    <button onclick="toggleChatWindow()" class="cta-box-btn secondary-style">Chat with Me</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2><span style="color: #ffffff;">About</span> Me</h2>
-        <p>I am a dedicated <b>Bachelor of Science in Information Technology</b> student at Central Philippines State University (CPSU). My academic journey is fueled by a deep commitment to mastering the art of digital problem-solving.</p>
-        <p>Beyond the classroom, I am an active creator who finds joy in the architecture of code and the aesthetics of graphic design. I pride myself on being highly organized, detail-oriented, and constantly evolving with the latest industry trends—transforming technical challenges into seamless user experiences.</p>  
-    </section>
-
-    <section id="skills">  
-        <h2><span style="color: #ffffff;">Technical</span> Stack</h2>  
-        <div class="centered-skill-text">Building Modern Experiences with Modern Tools</div>  
-        <div class="platform-list">  
-            <a href="https://www.adobe.com/products/premiere.html" target="_blank" class="platform-item"><div class="platform-icon-wrapper"><img src="Addob.png" alt="Premiere"></div><p>Premiere</p></a>  
-            <a href="https://www.figma.com/" target="_blank" class="platform-item"><div class="platform-icon-wrapper"><img src="Fig.png" alt="Figma"></div><p>Figma</p></a>  
-            <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="platform-item"><div class="platform-icon-wrapper"><img src="Add.png" alt="Photoshop"></div><p>Photoshop</p></a>  
-            <a href="https://www.canva.com/" target="_blank" class="platform-item"><div class="platform-icon-wrapper"><img src="Canv.png" alt="Canva"></div><p>Canva</p></a>  
-        </div>  
-    </section>
-
-   <section id="projects">  
-        <h2><span style="color: #ffffff;">Portfolio</span> Showcase</h2>  
-        <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filterProjects('all')">All Works</button>
-            <button class="filter-btn" onclick="filterProjects('graphics')">UI/UX Design</button>
-            <button class="filter-btn" onclick="filterProjects('certificates')">Accreditation</button>
-            <button class="filter-btn" onclick="filterProjects('links')">Live Links</button>
-        </div>
-        <div class="project-grid filter-item graphics">  
-            <div class="project-item"><img src="Ss.jpg" alt="Banner"><p>Marketing Banner</p></div>  
-            <div class="project-item"><img src="Ts.png" alt="T-Shirt Layout"><p>Merchandise Design</p></div>  
-            <div class="project-item"><img src="Sh.png" alt="Chessboard"><p>Vector Graphics</p></div>  
-        </div>  
-        <div class="other-outputs">
-            <ul class="output-list">
-                <li><span class="output-icon">📄</span> Canva Portfolio — <a href="https://www.canva.com/design/DAGvxBzvQtQ/4s8VArc0jbtKNpFQzud_eQ/edit" target="_blank">Click Here</a></li>
-                <li><span class="output-icon">💻</span> Figma Website — <a href="https://www.figma.com/proto/EFpFv6BXGQiEexLU8lTreA/Portfolio" target="_blank">Click Here</a></li>
-                <li><span class="output-icon">🛒</span> Figma E-commerce — <a href="https://www.figma.com/proto/pe9XXHKs5KHZAAYDsCTJ9P/Untitled" target="_blank">Click Here</a></li>
-            </ul>
-        </div>
-
-        <div class="filter-item certificates">
-            <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--primary-pink), transparent); margin: 40px 0;">  
-            <h2 class="cert-title"><span style="color: #ffffff;">Professional</span> Milestones</h2>  
-            <div class="project-grid">  
-                <div class="project-item">
-                    <img src="Cg.jpg" style="object-fit:contain;" alt="IT Seminar">
-                    <p>Advanced IT Seminar</p>
-                    <small style="display: block; font-size: 11px; opacity: 0.8; margin-top: 5px; color: var(--text-color);">
-                        Focused on emerging technologies and modern IT infrastructure trends.
-                    </small>
-                </div>  
-                <div class="project-item">
-                    <img src="Cf.jpg" style="object-fit:contain;" alt="Integrative Foundation">
-                    <p>Integrative Tech Foundation</p>
-                    <small style="display: block; font-size: 11px; opacity: 0.8; margin-top: 5px; color: var(--text-color);">
-                        Foundational course covering systems integration and technical workflows.
-                    </small>
-                </div>  
-                <div class="project-item">
-                    <img src="Fc.jpg" style="object-fit:contain;" alt="CISCO Networking">
-                    <p>Cisco Network Solutions</p>
-                    <small style="display: block; font-size: 11px; opacity: 0.8; margin-top: 5px; color: var(--text-color);">
-                        Comprehensive training in network configuration and security protocols.
-                    </small>
-                </div>  
-            </div>
-        </div>
-    </section>
-
-    <section id="Tutorials">
-        <h2><span style="color: #ffffff;">Expertise</span> Tutorials</h2>
-        <div class="video-grid">
-            <div class="video-wrapper"><div class="video-item"><iframe src="https://www.youtube.com/embed/jQ1sfKIl50E"></iframe></div><p>Figma Mastery</p></div>
-            <div class="video-wrapper"><div class="video-item"><iframe src="https://www.youtube.com/embed/jzWxBuvwuwQ"></iframe></div><p>Canva Pro Tips</p></div>
-            <div class="video-wrapper"><div class="video-item"><iframe src="https://www.youtube.com/embed/qwNbjGyhZ48"></iframe></div><p>Advanced Photoshop</p></div>
-        </div>
-    </section>
-
-    <section id="contact-section">
-        <h2><span style="color: #ffffff;">Contact</span> Me</h2>
-        <div id="contact-icons-card">
-            <div class="icon-group">
-                <a href="mailto:lenabahian@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.facebook.com/lens.bahian" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="tel:+639923134253" title="Call Me"><i class="fa-solid fa-phone"></i></a>
-                <a href="https://github.com/lenabahian-commits/Lena-Bahi-an-" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            </div>
-        </div>
-        <div id="contact-form-section">
-            <h2 style="text-transform: none; font-size: 1.5rem; margin-top: 10px;">Drop a Message</h2>
-            <p style="text-align: center; margin-bottom: 20px; font-size: 13px; opacity: 0.8;">Have a project in mind? Let's discuss!</p>
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-group"><input type="text" placeholder="First Name" required></div>
-                    <div class="form-group"><input type="text" placeholder="Last Name" required></div>
-                </div>
-                <div class="form-group" style="margin-top:15px;"><input type="email" placeholder="Email Address" required></div>
-                <div class="form-group" style="margin-top:15px;"><textarea placeholder="Your Message Here..." rows="5" required></textarea></div>
-                <button type="submit" class="submit-btn-small" style="margin-top:10px;">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-socials">
-            <a href="https://www.facebook.com/lens.bahian" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://github.com/lenabahian-commits/Lena-Bahi-an-" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-        </div>
-        <p style="font-size: 13px; opacity: 0.7; margin: 0;">&copy; 2026 Lena Bahi-an. All Rights Reserved.</p>
-    </footer>
-
+    <!-- APP ENGINE SCRIPT -->
     <script>
-        // Custom Cursor Movement
-        const cursor = document.querySelector('.cursor-dot');
-        if(cursor) {
-            window.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
-            });
-        }
-
-        // Section Reveal Animations on Scroll
-        const sections = document.querySelectorAll('section');
-        const revealSections = () => {
-            sections.forEach(sec => {
-                const top = sec.getBoundingClientRect().top;
-                if (top < window.innerHeight * 0.85) {
-                    sec.classList.add('reveal');
-                }
-            });
-        };
-        window.addEventListener('scroll', revealSections);
-        window.addEventListener('load', revealSections);
-
-        // Dark/Light Mode Toggle
-        const modeBtn = document.getElementById('modeBtn');
-        modeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            modeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        });
-
-        // Chat Widget Script
-        const chatBtn = document.getElementById('chat-button');
-        const chatWin = document.getElementById('chat-window');
-        const closeChat = document.getElementById('close-chat');
-        
-        function toggleChatWindow() {
-            if(chatWin.style.display === 'flex') {
-                chatWin.style.display = 'none';
-            } else {
-                chatWin.style.display = 'flex';
-            }
-        }
-        
-        chatBtn.addEventListener('click', toggleChatWindow);
-        closeChat.addEventListener('click', () => chatWin.style.display = 'none');
-
-        // Filter Portfolio Projects
-        function filterProjects(category) {
-            const items = document.querySelectorAll('.filter-item');
-            const buttons = document.querySelectorAll('.filter-btn');
+        /* ===== SPA VIEW ROUTING CONTROLLER ===== */
+        function switchView(viewId) {
+            // Remove active classes everywhere
+            document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            items.forEach(item => {
-                if (category === 'all') {
-                    item.style.display = 'block';
-                } else if (item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+            // Activate selected modules
+            document.getElementById(`view-${viewId}`).classList.add('active');
+            document.getElementById(`btn-${viewId}`).classList.add('active');
         }
 
-        function handleResumeAction() {
-            alert("CV download started!");
+        /* ===== CORE CHATBOT LOGIC UTILITIES ===== */
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const messageText = input.value.trim();
+            if (!messageText) return;
+
+            const chatMessagesContainer = document.getElementById('chat-messages');
+
+            // Render Outgoing User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg outgoing';
+            userMsg.textContent = messageText;
+            chatMessagesContainer.appendChild(userMsg);
+
+            // Clear Input Element
+            input.value = '';
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+            // Delayed response mimicking real connectivity
+            setTimeout(() => {
+                const responseMsg = document.createElement('div');
+                responseMsg.className = 'msg incoming';
+                responseMsg.textContent = "Thank you for reaching out! Your message has been logged. Lena will look over this when she accesses her local portal panel.";
+                chatMessagesContainer.appendChild(responseMsg);
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            }, 1000);
+        }
+
+        function handleChatKey(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
         }
     </script>
 </body>
